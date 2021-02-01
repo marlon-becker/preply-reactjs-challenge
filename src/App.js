@@ -1,15 +1,12 @@
-import React, { useEffect, useState } from "react";
-import {
-  NotificationContainer,
-  NotificationManager
-} from "react-notifications";
-import "react-notifications/lib/notifications.css";
-import useIsOnlineNotification from "./hooks/isOnlineNotification";
-import OnlineStatusMock from "./OnlineStatusMock";
-import "./App.css";
+import React, {useEffect, useState} from 'react'
+import {NotificationContainer, NotificationManager} from 'react-notifications'
+import 'react-notifications/lib/notifications.css'
+import useIsOnlineNotification from './hooks/isOnlineNotification'
+import OnlineStatusMock from './OnlineStatusMock'
+import './App.css'
 
 const withOnlineStatus = (WrappedComponent) => {
-  const WithOnlineStatus = (props) => {
+  return (props) => {
     const [
       isOnlineNotification,
       setIsOnlineNotification
@@ -25,12 +22,10 @@ const withOnlineStatus = (WrappedComponent) => {
         <OnlineStatusMock
           onIsOnlineChange={(isOnline) => setIsOnline(isOnline)}
         />
-        <WrappedComponent {...props} isOnline={isOnlineNotification} />
+        <WrappedComponent {...props} isOnline={isOnlineNotification}/>
       </>
     );
   };
-
-  return WithOnlineStatus;
 };
 
 const App = (props) => {

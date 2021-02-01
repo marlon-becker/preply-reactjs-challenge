@@ -1,27 +1,27 @@
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-let reconnectionTimeOut = null;
 const THROTTLE_TIME = 2000;
 const DISCONNECTED = false;
 
 const useIsOnlineNotification = () => {
+  const reconnectionTimeOut = useRef(null)
   const [isOnlineApp, setIsOnlineApp] = useState(false);
   const [isOnlineNotification, setIsOnlineNotification] = useState(false);
 
   useEffect(() => {
     if (isOnlineApp === DISCONNECTED) {
-      reconnectionTimeOut = setTimeout(() => {
+      reconnectionTimeOut.current = setTimeout(() => {
         setIsOnlineNotification(false);
       }, THROTTLE_TIME);
     } else {
-      clearTimeout(reconnectionTimeOut)
+      clearTimeout(reconnectionTimeOut.current)
       setIsOnlineNotification(true);
     }
 
     return () => {
-      clearTimeout(reconnectionTimeOut)
-    }    
+      clearTimeout(reconnectionTimeOut.current)
+    }
   }, [isOnlineApp]);
 
   return [
