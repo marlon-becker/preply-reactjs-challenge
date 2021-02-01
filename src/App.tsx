@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { NotificationContainer, NotificationManager } from 'react-notifications'
-import 'react-notifications/lib/notifications.css'
+import React, { useEffect, useState } from 'react';
+import { NotificationContainer, NotificationManager } from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 
-import useIsOnlineNotification from './hooks/isOnlineNotification'
-import OnlineStatusMock from './OnlineStatusMock'
-import './App.css'
+import useIsOnlineNotification from './hooks/isOnlineNotification';
+import OnlineStatusMock from './OnlineStatusMock';
+import './App.css';
 
 interface Props {
   isOnline: boolean
@@ -19,8 +19,8 @@ const withOnlineStatus: withOnlineStatusType = (WrappedComponent) => {
     const [
       isOnlineNotification,
       setIsOnlineNotification,
-    ] = useIsOnlineNotification()
-    const [isOnline, setIsOnline] = useState(false)
+    ] = useIsOnlineNotification();
+    const [isOnline, setIsOnline] = useState(false);
 
     useEffect(() => {
       // @ts-ignore
@@ -42,11 +42,11 @@ const withOnlineStatus: withOnlineStatusType = (WrappedComponent) => {
 }
 
 const App: React.FunctionComponent<Props> = (props) => {
-  const { isOnline } = props
+  const { isOnline } = props;
 
   useEffect(() => {
-    NotificationManager.info(isOnline ? 'Online' : 'Offline')
-  }, [isOnline])
+    NotificationManager.info(isOnline ? 'Online' : 'Offline');
+  }, [isOnline]);
 
   return (
     <>
@@ -58,4 +58,4 @@ const App: React.FunctionComponent<Props> = (props) => {
   )
 }
 
-export default withOnlineStatus(App)
+export default withOnlineStatus(App);
