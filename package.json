@@ -1,6 +1,6 @@
 {
   "name": "preply-riddle-online-status",
-  "homepage": "https://preply.github.io/fe-riddle-online-status/build",
+  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
