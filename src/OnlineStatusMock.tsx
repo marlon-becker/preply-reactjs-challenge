@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 /* don't edit this */
 
@@ -11,4 +11,4 @@ export default ({ onIsOnlineChange }) => (
       Offline
     </button>
   </div>
-);
+)
