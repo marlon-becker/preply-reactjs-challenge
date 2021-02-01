@@ -19,7 +19,7 @@ const withOnlineStatus: withOnlineStatusType = (WrappedComponent) => {
     const [
       isOnlineNotification,
       setIsOnlineNotification,
-    ] = useIsOnlineNotification(false)
+    ] = useIsOnlineNotification()
     const [isOnline, setIsOnline] = useState(false)
 
     useEffect(() => {
